@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block content %}
+
+<form method="POST" class="task-form">
+  <input type="text" name="task" placeholder="Add a new task..." required />
+  <button type="submit">Add</button>
+</form>
+
+<table>
+  <tr>
+    <th>Task</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+
+  {% for task in tasks %}
+  <tr>
+    <td>{{ task["task"] }}</td>
+    <td>
+      {% if task["completed"] %} ✅ Completed {% else %} ⏳ Pending {% endif %}
+    </td>
+    <td class="actions">
+      <a href="/complete/{{ task['id'] }}" title="Complete">✔</a>
+      <a href="/delete/{{ task['id'] }}" title="Delete">🗑</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}
