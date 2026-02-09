@@ -2,7 +2,7 @@
 
 ## 📌 Project Overview
 
-This project is a **Python Flask-based To-Do application** for the web.
+This project is a **Python Flask-based To-Do List application** for the web.
 It allows users to manage tasks through a modern, desktop-friendly interface, with card-style task boards, colored status indicators, and a responsive layout.
 The application uses **SQLite3 (built-in database)** for data storage and includes **CRUD operations**, **automated testing with pytest**, and a **Continuous Integration (CI) pipeline** via GitHub Actions..
 
