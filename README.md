@@ -79,27 +79,35 @@ The application uses an **SQLite3 database** with a single table:
 - git clone https://github.com/darrenfaleiro/flask-todo.git
 - cd flask-todo
 
+---
+
 ### 2️⃣ Create and activate virtual environment
 
 - python -m venv venv
 - venv\Scripts\activate
+
+---
 
 ### 3️⃣ Install dependencies
 
 - pip install --upgrade pip
 - pip install -r requirements.txt
 
+---
+
 ### ▶️ Running the Application
 
 - python app.py
 - Open your browser and visit: http://127.0.0.1:5000
+
+---
 
 ### 🧪 Running Unit Tests
 
 - python -m pytest
 
 ### 🧪 Example output:
----
+
 - collected 5 items
 - test_app.py::test_home_page PASSED
 - test_app.py::test_add_task PASSED
@@ -107,7 +115,9 @@ The application uses an **SQLite3 database** with a single table:
 - test_app.py::test_complete_task PASSED
 - test_app.py::test_delete_task PASSED
 - 5 passed in 0.85s
+
 ---
+
 ### 🔁 Continuous Integration (CI)
 
 - A CI pipeline has been implemented using: GitHub Actions
@@ -119,6 +129,8 @@ The application uses an **SQLite3 database** with a single table:
 - Fails build if any test fails
 - This ensures code quality and early detection of errors.
 
+---
+
 ### 🎨 UI / Design
 
 - Desktop-first layout with grid-style task board
@@ -126,3 +138,5 @@ The application uses an **SQLite3 database** with a single table:
 - Tasks are displayed in cards with colored borders for status
 - Inline task editing and actions (Edit / Complete / Delete)
 - Modern sticky navbar with logo and centered app title
+
+---
