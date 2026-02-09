@@ -52,7 +52,10 @@ def test_complete_task(client):
     client.get(f"/complete/{task_id}")
     response = client.get("/")
 
-    assert b"Completed" in response.data
+    # Decode response to string to handle emojis correctly
+    html = response.get_data(as_text=True)
+    assert "Completed" in html
+
 
 
 def test_delete_task(client):
