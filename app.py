@@ -3,7 +3,7 @@ import database
 
 app = Flask(__name__)
 
-# Create database table on startup
+# Create DB table on startup
 database.create_table()
 
 
@@ -11,10 +11,8 @@ database.create_table()
 def index():
     if request.method == "POST":
         task = request.form["task"]
-
-        if task.strip() != "":
+        if task.strip():
             database.add_task(task)
-
         return redirect(url_for("index"))
 
     tasks = database.get_all_tasks()
@@ -24,7 +22,8 @@ def index():
 @app.route("/update/<int:task_id>", methods=["POST"])
 def update(task_id):
     new_task = request.form["new_task"]
-    database.update_task(task_id, new_task)
+    if new_task.strip():
+        database.update_task(task_id, new_task)
     return redirect(url_for("index"))
 
 
@@ -40,10 +39,6 @@ def delete(task_id):
     return redirect(url_for("index"))
 
 
-@app.route("/exit")
-def exit_app():
-    return "Application Closed"
-
-
 if __name__ == "__main__":
     app.run(debug=True)
+

@@ -14,16 +14,46 @@
 
   {% for task in tasks %}
   <tr>
-    <td>{{ task["task"] }}</td>
     <td>
-      {% if task["completed"] %} ✅ Completed {% else %} ⏳ Pending {% endif %}
+      <span id="text-{{ task.id }}">{{ task.task }}</span>
+
+      <form
+        id="form-{{ task.id }}"
+        method="POST"
+        action="{{ url_for('update', task_id=task.id) }}"
+        style="display: none"
+      >
+        <input type="text" name="new_task" value="{{ task.task }}" required />
+        <button type="submit">Update</button>
+        <button type="button" onclick="cancelEdit({{ task.id }})">
+          Cancel
+        </button>
+      </form>
     </td>
+
+    <td>
+      {% if task.completed %} ✅ Completed {% else %} ⏳ Pending {% endif %}
+    </td>
+
     <td class="actions">
-      <a href="/complete/{{ task['id'] }}" title="Complete">✔</a>
-      <a href="/delete/{{ task['id'] }}" title="Delete">🗑</a>
+      <button onclick="editTask({{ task.id }})">Edit</button>
+      <a href="/complete/{{ task.id }}">✔</a>
+      <a href="/delete/{{ task.id }}">🗑</a>
     </td>
   </tr>
   {% endfor %}
 </table>
+
+<script>
+  function editTask(id) {
+    document.getElementById("text-" + id).style.display = "none";
+    document.getElementById("form-" + id).style.display = "inline";
+  }
+
+  function cancelEdit(id) {
+    document.getElementById("form-" + id).style.display = "none";
+    document.getElementById("text-" + id).style.display = "inline";
+  }
+</script>
 
 {% endblock %}
