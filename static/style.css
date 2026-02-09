@@ -1,156 +1,154 @@
-/* RESET */
-* {
+/* General Styles */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f4f5f7;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", system-ui, sans-serif;
 }
 
-body {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  min-height: 100vh;
-  color: #e5e7eb;
-}
-
-/* NAVBAR */
+/* Navbar */
 .navbar {
-  padding: 20px 40px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.navbar h2 {
-  font-weight: 600;
-}
-
-/* CONTAINER */
-.container {
-  max-width: 900px;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* ADD TASK FORM */
-.task-form {
   display: flex;
-  gap: 12px;
-  margin-bottom: 25px;
-}
-
-.task-form input {
-  flex: 1;
-  padding: 14px;
-  border-radius: 12px;
-  border: none;
-  outline: none;
-  background: rgba(255, 255, 255, 0.15);
+  align-items: center;
+  justify-content: center;
+  background-color: #0052cc;
   color: white;
-  font-size: 15px;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.task-form input::placeholder {
-  color: #cbd5e1;
+/* Logo on the left */
+.navbar-left {
+  position: absolute;
+  left: 2rem;
 }
 
-.task-form button {
-  padding: 14px 20px;
-  border-radius: 12px;
-  border: none;
-  background: linear-gradient(135deg, #38bdf8, #6366f1);
-  color: white;
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+/* Center the title text */
+.navbar-center h1 {
+  margin: 0;
   font-weight: 600;
-  cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  font-size: 1.5rem;
 }
 
-.task-form button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.5);
+.container {
+  padding: 2rem 4rem; /* wider padding for desktop */
+  max-width: 1600px; /* large web width */
+  margin: 0 auto;
 }
 
-/* TABLE */
-table {
+/* Task Board Layout */
+.task-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns for desktop */
+  gap: 1.5rem;
+  justify-items: stretch; /* stretch cards to column width */
+}
+
+/* Add Task Card */
+.add-task-card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  grid-column: span 4; /* take full row at the top */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-task-card form {
+  display: flex;
   width: 100%;
-  border-collapse: collapse;
+  max-width: 600px; /* desktop-friendly width */
+  gap: 0.5rem;
 }
 
-th {
-  text-align: left;
-  font-size: 13px;
-  text-transform: uppercase;
-  opacity: 0.6;
-  padding-bottom: 12px;
+.add-task-card input {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
 }
 
-tr {
-  transition: background 0.2s ease;
-}
-
-tr:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-td {
-  padding: 16px 8px;
-  vertical-align: middle;
-}
-
-/* TASK TEXT */
-td span {
-  font-size: 16px;
-}
-
-/* BUTTONS */
-button,
-.actions a {
-  background: rgba(255, 255, 255, 0.12);
-  border: none;
+.add-task-card button {
+  background-color: #0052cc;
   color: white;
-  padding: 8px 12px;
-  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
-  margin-right: 6px;
-  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+/* Task Cards */
+.task-card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+}
+
+.task-card.pending {
+  border-left: 6px solid #ffab00;
+}
+
+.task-card.completed {
+  border-left: 6px solid #36b37e;
+  opacity: 0.85;
+}
+
+.task-content {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.task-status {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.task-actions button,
+.task-actions a {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+.task-actions a {
   text-decoration: none;
 }
 
-button:hover,
-.actions a:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-1px);
+/* Form inside task cards */
+.task-card form input {
+  width: calc(100% - 10px);
+  padding: 0.5rem;
+  margin-bottom: 0.25rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
 }
 
-/* EDIT INPUT */
-td form input {
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  background: rgba(255, 255, 255, 0.18);
+.task-card form button {
+  background-color: #0052cc;
   color: white;
-  margin-right: 6px;
-}
-
-/* COMPLETED */
-td:nth-child(2) {
-  font-size: 14px;
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-  .task-form {
-    flex-direction: column;
-  }
-
-  td,
-  th {
-    font-size: 14px;
-  }
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 0.25rem;
 }

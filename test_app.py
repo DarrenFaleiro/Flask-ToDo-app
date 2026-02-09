@@ -66,3 +66,4 @@ def test_delete_task(client):
     response = client.get("/")
 
     assert b"Delete Me" not in response.data
+

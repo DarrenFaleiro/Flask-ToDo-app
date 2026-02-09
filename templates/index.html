@@ -1,22 +1,21 @@
 {% extends "base.html" %} {% block content %}
 
-<form method="POST" class="task-form">
-  <input type="text" name="task" placeholder="Add a new task..." required />
-  <button type="submit">Add</button>
-</form>
+<div class="task-board">
+  <!-- Add Task Form -->
+  <div class="add-task-card">
+    <form method="POST" class="task-form">
+      <input type="text" name="task" placeholder="Add a new task..." required />
+      <button type="submit">Add</button>
+    </form>
+  </div>
 
-<table>
-  <tr>
-    <th>Task</th>
-    <th>Status</th>
-    <th>Actions</th>
-  </tr>
-
+  <!-- Task Cards -->
   {% for task in tasks %}
-  <tr>
-    <td>
+  <div
+    class="task-card {% if task.completed %}completed{% else %}pending{% endif %}"
+  >
+    <div class="task-content">
       <span id="text-{{ task.id }}">{{ task.task }}</span>
-
       <form
         id="form-{{ task.id }}"
         method="POST"
@@ -29,25 +28,25 @@
           Cancel
         </button>
       </form>
-    </td>
+    </div>
 
-    <td>
+    <div class="task-status">
       {% if task.completed %} ✅ Completed {% else %} ⏳ Pending {% endif %}
-    </td>
+    </div>
 
-    <td class="actions">
+    <div class="task-actions">
       <button onclick="editTask({{ task.id }})">Edit</button>
       <a href="/complete/{{ task.id }}">✔</a>
       <a href="/delete/{{ task.id }}">🗑</a>
-    </td>
-  </tr>
+    </div>
+  </div>
   {% endfor %}
-</table>
+</div>
 
 <script>
   function editTask(id) {
     document.getElementById("text-" + id).style.display = "none";
-    document.getElementById("form-" + id).style.display = "inline";
+    document.getElementById("form-" + id).style.display = "block";
   }
 
   function cancelEdit(id) {
