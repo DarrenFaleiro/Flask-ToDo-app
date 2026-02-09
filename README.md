@@ -91,15 +91,15 @@ The application uses an **SQLite3 database** with a single table:
 
 ### ▶️ Running the Application
 
-python app.py
-Open your browser and visit: http://127.0.0.1:5000
+- python app.py
+- Open your browser and visit: http://127.0.0.1:5000
 
 ### 🧪 Running Unit Tests
 
 - python -m pytest
 
-### ✅ Example output:
-
+### 🧪 Example output:
+---
 - collected 5 items
 - test_app.py::test_home_page PASSED
 - test_app.py::test_add_task PASSED
@@ -107,7 +107,7 @@ Open your browser and visit: http://127.0.0.1:5000
 - test_app.py::test_complete_task PASSED
 - test_app.py::test_delete_task PASSED
 - 5 passed in 0.85s
-
+---
 ### 🔁 Continuous Integration (CI)
 
 - A CI pipeline has been implemented using: GitHub Actions
