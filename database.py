@@ -2,7 +2,7 @@ import sqlite3
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATABASE_NAME = os.path.join(BASE_DIR, "todo.db")
+DATABASE_NAME = os.path.join(BASE_DIR, "data/todo.db")
 
 
 def get_connection():
