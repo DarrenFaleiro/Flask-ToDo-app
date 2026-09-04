@@ -2,8 +2,10 @@ import sqlite3
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATABASE_NAME = os.path.join(BASE_DIR, "data/todo.db")
+DATA_DIR = os.path.join(BASE_DIR, "data")
+DATABASE_NAME = os.path.join(DATA_DIR, "todo.db")
 
+os.makedirs(DATA_DIR, exist_ok=True)
 
 def get_connection():
     conn = sqlite3.connect(DATABASE_NAME)
