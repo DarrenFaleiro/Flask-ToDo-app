@@ -22,7 +22,12 @@ pipeline {
                 sh 'docker run -d --name todo-jenkins-test -p 5000:5000 todo-app:jenkins-test'
                 sh 'sleep 5'
                 sh 'curl localhost:5000'
-            }    
+            }
+        }
+    }
+    post {
+        always {
+            sh 'docker rm -f todo-jenkins-test || true'
         }
     }
 }
