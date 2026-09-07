@@ -11,6 +11,12 @@ pipeline {
                 sh 'ls -la'
             }
         }
+        stage('Test') {
+            steps {
+                sh 'pip install --no-cache-dir -r requirements.txt --break-system-packages'
+                sh 'pytest test_app.py -v'
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t todo-app:jenkins-test .'
