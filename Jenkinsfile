@@ -11,5 +11,10 @@ pipeline {
                 sh 'ls -la'
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t todo-app:jenkins-test .'
+            }
+        }
     }
 }
